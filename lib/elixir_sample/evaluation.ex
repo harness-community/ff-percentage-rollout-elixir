@@ -2,13 +2,14 @@ defmodule ElixirPercentageRollout.Evaluation do
   require Logger
 
   def run_percentage_rollout_evaluations(flagIdentifier) do
+    Logger.info("Running 100k evaluations on flag #{flagIdentifier}")
     {rollout_variant_1_count, rollout_variant_2_count, rollout_variant_3_count} = evaluate_100k_unique_targets(flagIdentifier, {0, 0, 0}, 0)
 
     rollout_variant_1_percentage = Float.round(rollout_variant_1_count / 100_000 * 100, 2)
     rollout_variant_2_percentage = Float.round(rollout_variant_2_count / 100_000 * 100, 2)
     rollout_variant_3_percentage = Float.round(rollout_variant_3_count / 100_000 * 100, 2)
 
-    Logger.info("Final Counter Values: Variant 1: #{rollout_variant_1_count}, Variant 2: #{rollout_variant_2_count}, Variant 3: #{rollout_variant_3_count}")
+    Logger.info("Final Variation Evaluation Counts: Variant 1: #{rollout_variant_1_count}, Variant 2: #{rollout_variant_2_count}, Variant 3: #{rollout_variant_3_count}")
     Logger.info("""
     Final Percentage Values (rounded to 2 decimal places):
     rollout_variant_1 1: #{rollout_variant_1_count} (#{rollout_variant_1_percentage}%)
@@ -28,9 +29,7 @@ defmodule ElixirPercentageRollout.Evaluation do
       name: "targetname" <> target_identifier_number,
       anonymous: ""
     }
-    Logger.info(
-      "Target #{inspect(dynamic_target)}"
-    )
+
     case :cfclient.string_variation(flagIdentifier, dynamic_target, "default") do
       "rollout_variant_1" ->
         evaluate_100k_unique_targets(
