@@ -52,6 +52,8 @@ To use the module, call the `run_percentage_rollout_evaluations` function with t
 ElixirPercentageRollout.Evaluation.run_percentage_rollout_evaluations("my-flag-identifier")
 ```
 
+The application will log the variation evaluation counts, and their percentage breakdown.
+
 Next, you can optionally validate that your flag's metrics match up with your percentage rollout rule. 
 ** Important: Metrics for Harness Feature Flags show total evaluations, not the percentage rollout state of given targets.
 Discrepancies can occur in Metrics for the following reasons:
