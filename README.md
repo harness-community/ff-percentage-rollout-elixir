@@ -10,6 +10,9 @@ To sign up, https://app.harness.io/auth/#/signup/
 
 The ElixirPercentageRollout is a module in Elixir that simulates a percentage rollout evaluation for feature flags. It counts the number of occurrences of each rollout variant over 100,000 evaluations with unique targets and calculates the percentage each variant makes up of the total. This can be used to verify the distribution of different variations in a feature flag setup.
 
+## Requirements
+- Elixir
+
 ## Prerequisites
 
 Before using this module, make sure to:
