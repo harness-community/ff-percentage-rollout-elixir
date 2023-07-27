@@ -18,7 +18,7 @@ defmodule ElixirPercentageRollout.Evaluation do
       name: "targetname" <> target_identifier_number,
       anonymous: ""
     }
-    case :cfclient.string_variation("My_string_flag", dynamic_target, "default") do
+    case :cfclient.string_variation(flagIdentifier, dynamic_target, "default") do
       {:ok, _, "variation1"} ->
         evaluate_200k_unique_targets(
           flagIdentifier,
