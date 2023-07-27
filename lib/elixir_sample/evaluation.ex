@@ -4,18 +4,18 @@ defmodule ElixirPercentageRollout.Evaluation do
   require Logger
 
   def run_percentage_rollout_evaluations(flagIdentifier) do
-    {count1, count2, count3} = evaluate_200k_unique_targets(flagIdentifier, {0, 0, 0}, 0)
+    {rollout_variant_1_count, rollout_variant_2_count, rollout_variant_3_count} = evaluate_200k_unique_targets(flagIdentifier, {0, 0, 0}, 0)
 
-    percentage1 = Float.round(count1 / 200_000 * 100, 2)
-    percentage2 = Float.round(count2 / 200_000 * 100, 2)
-    percentage3 = Float.round(count3 / 200_000 * 100, 2)
+    rollout_variant_1_percentage = Float.round(rollout_variant_1_count / 200_000 * 100, 2)
+    rollout_variant_2_percentage = Float.round(count2 / 200_000 * 100, 2)
+    rollout_variant_3_percentage = Float.round(count3 / 200_000 * 100, 2)
 
-    Logger.info("Final Counter Values: Variant 1: #{count1}, Variant 2: #{count2}, Variant 3: #{count3}")
+    Logger.info("Final Counter Values: Variant 1: #{rollout_variant_1_count}, Variant 2: #{count2}, Variant 3: #{count3}")
     Logger.info("""
     Final Percentage Values (rounded to 2 decimal places):
-    rollout_variant_1 1: #{count1} (#{percentage1}%)
-    rollout_variant_2 2: #{count2} (#{percentage2}%)
-    rollout_variant_3 3: #{count3} (#{percentage3}%)
+    rollout_variant_1 1: #{rollout_variant_1_count} (#{rollout_variant_1_percentage}%)
+    rollout_variant_2 2: #{rollout_variant_2_count} (#{rollout_variant_2_percentage}%)
+    rollout_variant_3 3: #{rollout_variant_3_count} (#{rollout_variant_3_percentage}%)
     """)
   end
 
